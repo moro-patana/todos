@@ -23,7 +23,7 @@ export class TodoResolver {
     @Mutation(() => Todo)
     async updateTodo(@Arg("id") id: string, @Arg("data") data: UpdateTodoInput) {
         const todo = await Todo.findOne({ where: { id } });
-        if (!todo) throw new Error("Book not found!");
+        if (!todo) throw new Error("Todo not found!");
         Object.assign(todo, data);
         await todo.save();
         return todo;
